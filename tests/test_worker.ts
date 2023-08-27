@@ -2417,7 +2417,7 @@ describe('workers', function () {
       describe('when creating children at runtime', () => {
         it('should wait children as one step of the parent job', async function () {
           this.timeout(8000);
-          const parentQueueName = `parent-queue-${v4()}`;
+          const parentQueueName = `${queueName}-parent`;
           const parentQueue = new Queue(parentQueueName, { connection });
 
           enum Step {
@@ -3152,7 +3152,7 @@ describe('workers', function () {
         const parentToken2 = 'parent-token2';
         const childToken = 'child-token';
 
-        const parentQueueName = `parent-queue-${v4()}`;
+        const parentQueueName = `${queueName}-parent`;
 
         const parentQueue = new Queue(parentQueueName, { connection });
         const parentWorker = new Worker(parentQueueName, null, { connection });
@@ -3272,7 +3272,7 @@ describe('workers', function () {
           const parentToken = 'parent-token';
           const childToken = 'child-token';
 
-          const parentQueueName = `parent-queue-${v4()}`;
+          const parentQueueName = `${queueName}-parent`;
 
           const parentQueue = new Queue(parentQueueName, { connection });
           const parentWorker = new Worker(parentQueueName, null, {
@@ -3350,7 +3350,7 @@ describe('workers', function () {
       const value = { bar: 'something' };
       const parentToken = 'parent-token';
 
-      const parentQueueName = `parent-queue-${v4()}`;
+      const parentQueueName = `${queueName}-parent`;
 
       const parentQueue = new Queue(parentQueueName, { connection });
       const parentWorker = new Worker(parentQueueName, null, { connection });
